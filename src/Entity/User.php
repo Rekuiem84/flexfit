@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -32,6 +34,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $username = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $height = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $weight = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?ActivityLevel $activity_level = null;
+
+    /**
+     * @var Collection<int, Seance>
+     */
+    #[ORM\OneToMany(targetEntity: Seance::class, mappedBy: 'user')]
+    private Collection $seances;
+
+    /**
+     * @var Collection<int, SavedProduct>
+     */
+    #[ORM\OneToMany(targetEntity: SavedProduct::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $savedProducts;
+
+    public function __construct()
+    {
+        $this->seances = new ArrayCollection();
+        $this->savedProducts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,5 +138,113 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): static
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getWeight(): ?float
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(float $weight): static
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getActivityLevel(): ?ActivityLevel
+    {
+        return $this->activity_level;
+    }
+
+    public function setActivityLevel(?ActivityLevel $activity_level): static
+    {
+        $this->activity_level = $activity_level;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Seance>
+     */
+    public function getSeances(): Collection
+    {
+        return $this->seances;
+    }
+
+    public function addSeance(Seance $seance): static
+    {
+        if (!$this->seances->contains($seance)) {
+            $this->seances->add($seance);
+            $seance->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeance(Seance $seance): static
+    {
+        if ($this->seances->removeElement($seance)) {
+            // set the owning side to null (unless already changed)
+            if ($seance->getUser() === $this) {
+                $seance->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SavedProduct>
+     */
+    public function getSavedProducts(): Collection
+    {
+        return $this->savedProducts;
+    }
+
+    public function addSavedProduct(SavedProduct $savedProduct): static
+    {
+        if (!$this->savedProducts->contains($savedProduct)) {
+            $this->savedProducts->add($savedProduct);
+            $savedProduct->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSavedProduct(SavedProduct $savedProduct): static
+    {
+        if ($this->savedProducts->removeElement($savedProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($savedProduct->getUser() === $this) {
+                $savedProduct->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
