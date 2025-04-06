@@ -1,0 +1,21 @@
+<header>
+	<ul class="nav">
+		<a href="{{ path('app_home') }}">
+			<div class="logo-cont">
+				<img src="{{ asset('images/logo-blanc.png') }}" alt="Logo">
+			</div>
+		</a>
+		<li>
+			<a href="{{ path('app_home')}}">Produits</a>
+		</li>
+		<li>
+			<a href="{{ path('app_home')}}">Collections</a>
+		</li>
+		<li>
+			<a href="{{ path('app_home')}}">Blog</a>
+		</li>
+	</ul>
+	<div class="cta-cont">
+		{% include "components/link_to.html.twig" with {'route_name': 'app_home','text': 'Contact'} %}
+	</div>
+</header>
