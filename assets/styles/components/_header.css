@@ -1,0 +1,39 @@
+header {
+	position: fixed;
+	top: 1.5rem;
+	left: 1.5rem;
+	width: calc(100% - 3rem);
+	display: flex;
+	justify-content: space-between;
+
+	& > * {
+		padding: 0.5rem;
+	}
+
+	.nav {
+		position: relative;
+		background: var(--color-black);
+		color: var(--color-white);
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+		padding-inline: 2.5rem;
+		border-bottom-right-radius: 1rem;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: inherit;
+			translate: 0 -100%;
+		}
+
+		& a {
+			padding: 0.25em;
+			font-size: var(--fs-text);
+		}
+	}
+	.logo-cont {
+		display: flex;
+	}
+}
