@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/localhost/B3/flexfit/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/localhost/B3/flexfit/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+	{% include "components/header.html.twig" %}
+	<section class="hero">
+		<div class="content">
+			<h1>Révolutionnez votre entraînement avec une
+				<span class="accent">technologie</span>
+				de pointe</h1>
+			<p>Optimisez vos performances et accélérez votre récupération grâce à des vêtements de sport intelligents intégrant une technologie de compression adaptative et des capteurs de suivi musculaire.</p>
+			<div class="cta-cont">
+				{% include "components/link_to.html.twig" with {'route_name': 'app_home','text': 'Voir les produits'} %}
+			</div>
+		</div>
+	</section>
 {% endblock %}
