@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_product_delete_image', {'imageId': id, 'productId': productId}) }}">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ id) }}">
+	<button class="btn">X</button>
+</form>

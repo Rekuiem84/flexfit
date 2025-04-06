@@ -19,6 +19,16 @@ class Media
     #[ORM\ManyToOne(inversedBy: 'media')]
     private ?Product $product = null;
 
+
+    #[ORM\Column]
+    private ?bool $isMainImage = null;
+
+    public function __construct($url, $isMainImage)
+    {
+        $this->url = $url;
+        $this->isMainImage = $isMainImage;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +54,18 @@ class Media
     public function setProduct(?Product $product): static
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function isMainImage(): ?bool
+    {
+        return $this->isMainImage;
+    }
+
+    public function setIsMainImage(bool $isMainImage): static
+    {
+        $this->isMainImage = $isMainImage;
 
         return $this;
     }

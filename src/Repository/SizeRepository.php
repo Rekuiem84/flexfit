@@ -15,6 +15,16 @@ class SizeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Size::class);
     }
+    public function getAll(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT s
+            FROM App\Entity\Size s'
+        );
+        return $query->getResult();
+    }
 
     //    /**
     //     * @return Size[] Returns an array of Size objects

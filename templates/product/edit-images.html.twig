@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product Images
+
+{% endblock %}
+
+{% block body %}
+	<h1>Edit Product Images</h1>
+
+	{% for media in product.media %}
+		{% if not media.isMainImage %}
+			<div class="row">
+				<div class="img-cont">
+					<img src="{{ asset('uploads/images/' ~ media.url) }}" alt="{{ media.url }}" style="max-width: 200px;">
+				</div>
+				{{ include('product/_delete_details_image.html.twig', {'id': media.id, 'productId': product.id}) }}
+			</div>
+		{% endif %}
+	{% endfor %}
+
+
+	{{ include('product/_form.html.twig', {'button_label': 'Update' }) }}
+
+	<a href="{{ path('app_product_index') }}">back to list</a>
+
+{% endblock %}

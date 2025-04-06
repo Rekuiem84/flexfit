@@ -20,20 +20,20 @@ class Seance
     #[ORM\Column]
     private ?int $percieved_intensity = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $burned_calories = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 10, nullable: true)]
     private ?string $body_temperature_delta = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $muscle_fatigue = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $heart_recovery_rate = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $heartbeart_variation = null;
+    #[ORM\Column(nullable: true)]
+    private ?string $heartbeat_variation = null;
 
     #[ORM\ManyToOne(inversedBy: 'seances')]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,6 +41,11 @@ class Seance
 
     #[ORM\Column]
     private ?\DateTimeImmutable $date = null;
+
+    public function __construct()
+    {
+        $this->date = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -119,14 +124,14 @@ class Seance
         return $this;
     }
 
-    public function getHeartbeartVariation(): ?string
+    public function getHeartbeatVariation(): ?string
     {
-        return $this->heartbeart_variation;
+        return $this->heartbeat_variation;
     }
 
-    public function setHeartbeartVariation(string $heartbeart_variation): static
+    public function setHeartbeatVariation(string $heartbeat_variation): static
     {
-        $this->heartbeart_variation = $heartbeart_variation;
+        $this->heartbeat_variation = $heartbeat_variation;
 
         return $this;
     }

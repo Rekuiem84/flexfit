@@ -18,4 +18,8 @@
 
 	<button type="submit" class="btn">Créer mon compte</button>
 	{{ form_end(registrationForm) }}
+	<p>J'ai déjà compte :
+		<a href="{{ path('app_login') }}">me connecter</a>
+	</p>
+
 {% endblock %}

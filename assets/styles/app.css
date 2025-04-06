@@ -1,3 +1,7 @@
 body {
-    background-color: skyblue;
+	background-color: skyblue;
+}
+.row {
+	display: flex;
+	align-items: center;
 }
