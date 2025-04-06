@@ -1,0 +1,7 @@
+body {
+	min-height: 100vh;
+	min-height: 100dvh;
+	background: var(--color-black);
+	color: var(--color-white);
+	padding: 1.5rem;
+}

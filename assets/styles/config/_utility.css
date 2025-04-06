@@ -1,0 +1,37 @@
+.button_link-to {
+	width: fit-content;
+	background: var(--color-white-transparent-60);
+	color: var(--color-black);
+	border-radius: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2px;
+	font-size: var(--fs-text-plus);
+
+	&:focus-visible {
+		outline: 1px solid var(--color-white);
+		outline-offset: 2px;
+	}
+
+	p {
+		margin-inline: 0.75rem;
+	}
+
+	.icon-cont {
+		border-radius: 100px;
+		background: var(--color-white);
+		padding: 0.5rem;
+		width: 2.25rem;
+		height: 2.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		rotate: -45deg;
+
+		font-size: 1.5rem;
+	}
+}
+.accent {
+	color: var(--color-accent);
+}
