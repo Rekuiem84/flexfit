@@ -1,6 +1,9 @@
 :root {
 	--color-accent: rgb(0, 123, 255);
 	--color-black: rgb(0, 0, 0);
-	--color-white: rgb(255, 255, 255);
+	--color-white: #ffffff;
 	--color-white-transparent-60: rgb(255, 255, 255, 0.6);
+	--color-white-light-60: rgb(152, 152, 152);
+	--color-black-light-60: rgb(100, 100, 100);
+	--color-dark-gray: #151515;
 }

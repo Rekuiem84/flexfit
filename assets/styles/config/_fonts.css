@@ -1,5 +1,16 @@
 :root {
 	--fs-xxl: 3.5rem;
-	--fs-text: 1rem;
+
+	--t-fs-xl: 3rem;
+	--t-fs-l: 2rem;
+
+	--fs-ml: 1.75rem;
+	--fs-m: 1.5rem;
+
+	--t-fs-ms: 2rem;
+	--t-fs-s: 2rem;
+	--t-fs-xs: 2rem;
+
 	--fs-text-plus: 1.125rem;
+	--fs-text: 1rem;
 }

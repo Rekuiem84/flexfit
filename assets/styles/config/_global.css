@@ -5,3 +5,9 @@ body {
 	color: var(--color-white);
 	padding: 1.5rem;
 }
+h2 {
+	font-size: var(--fs-m);
+	color: var(--color-white);
+	line-height: 1.75;
+	font-weight: 500;
+}
