@@ -1,0 +1,12 @@
+<div class="product-card">
+	<div class="product-image">
+		<img src="{{ asset(image) }}" alt="{{name}}">
+		<div class="pastille-cont">
+			{% include 'components/pastille.html.twig' %}
+		</div>
+	</div>
+	<div class="product-infos">
+		<div class="product-name">{{name}}</div>
+		<div class="product-price">{{price}}€</div>
+	</div>
+</div>
