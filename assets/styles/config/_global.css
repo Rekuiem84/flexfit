@@ -11,3 +11,23 @@ h2 {
 	line-height: 1.75;
 	font-weight: 500;
 }
+.popular,
+.testimonial,
+footer {
+	margin-block-start: 2.5rem;
+}
+section > .heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.title-cont {
+		p {
+			color: var(--color-white-transparent-60);
+			font-size: var(--fs-text);
+		}
+	}
+}
+section:nth-of-type(n + 2) {
+	margin-top: 2.5rem;
+}

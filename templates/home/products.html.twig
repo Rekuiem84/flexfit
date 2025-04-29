@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	{% include "components/header.html.twig" %}
+	<section class="hero">
+		<div class="content">
+			<h1>Révolutionnez votre entraînement avec une
+				<span class="accent">technologie</span>
+				de pointe</h1>
+			<p>Optimisez vos performances et accélérez votre récupération grâce à des vêtements de sport intelligents intégrant une technologie de compression adaptative et des capteurs de suivi musculaire.</p>
+			<div class="cta-cont">
+				{% include "components/link_to.html.twig" with {'route_name': 'app_home','text': 'Voir les produits'} %}
+			</div>
+		</div>
+	</section>
+
+
+	<section
+		class="home-collections">
+		{# todo avec categories #}
+		<div class="collections-cards-cont">
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Homme', 'collection_id': 1} %}
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Femme', 'collection_id': 2} %}
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Accessoires', 'collection_id': 3} %}
+		</div>
+
+	</section>
+
+
+	{% include "components/footer.html.twig" %}
+{% endblock %}

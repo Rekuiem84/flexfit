@@ -5,7 +5,8 @@
 
 {% block body %}
 	{% include "components/header.html.twig" %}
-	<section class="hero">
+	<section class="hero" style="background-image: linear-gradient( rgba(0, 0, 0, var(--_darkness)), rgba(0, 0, 0, var(--_darkness)) ), url('{{ asset('images/hero-image.png') }}');">
+
 		<div class="content">
 			<h1>Révolutionnez votre entraînement avec une
 				<span class="accent">technologie</span>
@@ -16,4 +17,116 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="popular">
+		<div class="heading">
+			<div class="title-cont">
+				<h2 class="title">Les plus populaires</h2>
+				<p>Les incontournables de FlexFit, plébiscités par les sportifs pour leur technologie et leur confort.</p>
+			</div>
+			{% include "components/link_see.html.twig" with {'route_name': 'app_home'} %}
+		</div>
+		<div
+			class="articles-cont">
+			{# todo #}
+			{% for i in 0..2 %}
+				{% include "components/product_card.html.twig" with {'image': 'images/todo.png', 'name': 'Pull FlexFit Performance', 'price': '149.99'} %}
+			{% endfor %}
+		</div>
+	</section>
+
+	<section class="testimonial">
+		<div class="pastille-cont nav-cont">
+			{% include 'components/pastille.html.twig' with {'icon': 'bx bx-left-arrow-alt', 'id': 'testimonial-prev'} %}
+			{% include 'components/pastille.html.twig' with {'id': 'testimonial-next' } %}
+		</div>
+		<div class="content">
+			<div class="img-cont"><img src="{{ asset('images/testimonial-1.jpg')}}" alt=""></div>
+			<p class="text">“Grâce à FlexFit, j’ai redécouvert le confort et la performance dans mes entraînements. Une technologie qui fait vraiment la différence !”</p>
+			<div class="infos">
+				<div class="stars-cont">
+					<i class='bx bxs-star'></i>
+					<i class='bx bxs-star'></i>
+					<i class='bx bxs-star'></i>
+					<i class='bx bxs-star'></i>
+					<i class='bx bxs-star'></i>
+				</div>
+				<p class="name">Alexandre, Sportif Passionné</p>
+			</div>
+			<div class="partners-wrapper">
+				<p>Des milliers de sportifs nous font confiance. Rejoignez la communauté FlexFit et dépassez vos limites.</p>
+				<div class="partners-cont">
+					<div class="img-cont"><img src="" alt=""></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-collections">
+		<div class="heading">
+			<div class="title-cont">
+				<h2 class="title">Nos collections</h2>
+				<p>Découvrez nos 3 gammes, adaptées à tous</p>
+			</div>
+			{% include "components/link_see.html.twig" with {'route_name': 'app_home'} %}
+		</div>
+		{# todo avec categories #}
+		<div class="collections-cards-cont">
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Homme', 'collection_id': 1} %}
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Femme', 'collection_id': 2} %}
+			{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Accessoires', 'collection_id': 3} %}
+		</div>
+
+	</section>
+
+	<section class="showcase">
+		<div class="pastille-cont nav-cont">
+			{% include 'components/pastille.html.twig' with {'icon': 'bx bx-play', 'id': 'testimonial-play'} %}
+			{% include 'components/pastille.html.twig' with {'icon': 'bx bx-pause', 'id': 'testimonial-pause'} %}
+		</div>
+		<div class="video-cont">
+			<video autoplay muted loop class="video">
+				<source src="video.mp4" type="video/mp4">
+				Votre navigateur ne prend pas en compte les vidéos.
+			</video>
+		</div>
+	</section>
+
+	<section class="arguments">
+		<div class="titre-cont">
+			<h2>Pourquoi choisir FlexFit ?</h2>
+			<p>L’innovation au service de votre performance.</p>
+		</div>
+		<div class="cards-cont">
+			<div class="card">
+				<div class="pastille-cont nav-cont">
+					{% include 'components/pastille.html.twig' with {'icon': 'bx bxs-cog'} %}
+				</div>
+				<div class="content-cont">
+					<h3>Technologie innovante</h3>
+					<p>Nos vêtements intègrent des capteurs intelligents pour optimiser vos performances et suivre vos progrès en temps réel.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="pastille-cont nav-cont">
+					{% include 'components/pastille.html.twig' with {'icon': 'bx bxs-shield-plus'} %}
+				</div>
+				<div class="content-cont">
+					<h3>Matériaux Haute Performance</h3>
+					<p>Fabriqués avec des tissus respirants, extensibles et résistants, nos produits vous offrent un confort absolu et une durabilité inégalée.</p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="pastille-cont nav-cont">
+					{% include 'components/pastille.html.twig' with {'icon': 'bx bx-fast-forward'} %}
+				</div>
+				<div class="content-cont">
+					<h3>Livraison Rapide & Sécurisée</h3>
+					<p>Recevez votre équipement en un temps record grâce à notre service de livraison fiable et suivi.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{% include "components/footer.html.twig" %}
 {% endblock %}

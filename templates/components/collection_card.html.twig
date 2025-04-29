@@ -1,0 +1,11 @@
+<a href="{{ path('app_collections', {'id': collection_id}) }}">
+	<div class="collection-card">
+		<div class="collection-image">
+			<img src="{{ asset(image) }}" alt="{{name}}">
+			<div class="pastille-cont">
+				{% include 'components/pastille.html.twig' %}
+			</div>
+		</div>
+		<p class="collection-name">{{name}}</p>
+	</div>
+</a>
