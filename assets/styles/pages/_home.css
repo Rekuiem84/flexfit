@@ -27,7 +27,7 @@
 			line-height: 1;
 		}
 		& > p {
-			font-size: var(--fs-text);
+			font-size: var(--fs-text-plus);
 			text-wrap: balance;
 			color: var(--color-white-transparent-60);
 		}
