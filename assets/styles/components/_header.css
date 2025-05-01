@@ -36,5 +36,6 @@ header {
 	}
 	.logo-cont {
 		display: flex;
+		max-width: 170px;
 	}
 }
