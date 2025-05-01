@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -31,10 +33,19 @@ final class HomeController extends AbstractController
         ]);
     }
     #[Route('/products', name: 'app_home_products')]
-    public function product(ProductRepository $productRepository): Response
+    public function product(ProductRepository $productRepository, CategoryRepository $categoryRepository, Request $request): Response
     {
+        $categoryId = $request->query->get('category');
+
+        $products = $categoryId
+            ? $productRepository->findBy(['category' => $categoryId, 'isAvailable' => true])
+            : $productRepository->findBy(['isAvailable' => true]);
+        // randomize l'ordre des produiits
+        shuffle($products);
+
         return $this->render('home/products.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products,
+            'categories' => $categoryRepository->getAll(),
         ]);
     }
 }
