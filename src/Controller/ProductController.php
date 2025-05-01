@@ -215,6 +215,18 @@ final class ProductController extends AbstractController
   public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
   {
     if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->getPayload()->getString('_token'))) {
+      // First, remove all associated media files and their physical files
+      foreach ($product->getMedia() as $media) {
+        // Delete the physical file
+        $mediaPath = $this->getParameter('media_directory') . '/' . $media->getUrl();
+        if (file_exists($mediaPath)) {
+          unlink($mediaPath);
+        }
+        // Remove the media entity
+        $entityManager->remove($media);
+      }
+      
+      // Now we can safely remove the product
       $entityManager->remove($product);
       $entityManager->flush();
     }
