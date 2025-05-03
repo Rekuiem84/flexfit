@@ -31,3 +31,11 @@ section > .heading {
 section:nth-of-type(n + 2) {
 	margin-top: 2.5rem;
 }
+.articles-list {
+	max-width: 1400px;
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}

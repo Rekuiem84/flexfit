@@ -6,7 +6,8 @@ footer {
 		--_bg-color: var(--color-black);
 		--_size: 1.5rem;
 		position: relative;
-		width: fit-content;
+		display: flex;
+		max-width: 170px;
 		background: var(--_bg-color);
 		padding: 1rem;
 		border-bottom-right-radius: var(--_size);

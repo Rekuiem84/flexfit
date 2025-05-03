@@ -6,7 +6,119 @@
 {% block body %}
 	{% include "components/header.html.twig" %}
 	<main class="shop">
-		<section class="product"></section>
+		<section class="product">
+			<div class="images-cont">
+				<div class="images-details-wrapper">
+					<div class="img-cont"><img src="" alt=""></div>
+				</div>
+				<div class="image-main-cont">
+					<img src="" alt="">
+					<div class="message pastille-cont">
+						<p>Survolez pour zoomer</p>
+					</div>
+				</div>
+			</div>
+			<div class="content-cont">
+				<h1 class="product__title">{{product.name}}</h1>
+				<p class="product__price">{{product.price|number_format(2, ',', '')}}€</p>
+				<p class="product__description">{{product.description}}</p>
+				<div class="sizes-cont">
+					<label for="">XS<input type="radio"></label>
+					<label for="">S<input type="radio"></label>
+					<label for="">M<input type="radio"></label>
+					<label for="">L<input type="radio"></label>
+					<label for="">XL<input type="radio"></label>
+					<label for="">XXL<input type="radio"></label>
+				</div>
+				<button class="add-panier">Ajouter au panier</button>
+				<button class="buy">Acheter maintenant</button>
+				<div class="details-wrapper">
+					<details>
+						<summary>Garantie</summary>
+						<div>
+							<p>Chaque achat est couvert par notre engagement envers la qualité. Profitez d’une tranquillité d’esprit avec une garantie de 90 jours, assurant satisfaction et fiabilité de votre produit.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Informations sur la livraison</summary>
+						<div>
+							<p>Chaque achat est couvert par notre engagement envers la qualité. Profitez d’une tranquillité d’esprit avec une garantie de 90 jours, assurant satisfaction et fiabilité de votre produit.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Support</summary>
+						<div>
+							<p>Pour toute question, merci de nous contacter depuis
+								<a href="{{path('app_home')}}">cette page</a>
+							</p>
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		<section class="arguments">
+			<div class="cards-cont">
+				<div class="card">
+					<div class="pastille-cont nav-cont">
+						{% include 'components/pastille.html.twig' with {'icon': 'bx bx-undo'} %}
+					</div>
+					<div class="content-cont">
+						<h3>Retours sous 30 jours</h3>
+						<p>Profitez de retours simplifiés et sans tracas grâce à notre politique de retour sous 30 jours, pour une totale tranquillité d’esprit.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="pastille-cont nav-cont">
+						{% include 'components/pastille.html.twig' with {'icon': 'bx bxs-zap'} %}
+					</div>
+					<div class="content-cont">
+						<h3>Livraison en moins de 48h</h3>
+						<p>Commandez aujourd’hui, recevez votre produit dès le lendemain avec notre service de livraison express fiable et rapide.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="pastille-cont nav-cont">
+						{% include 'components/pastille.html.twig' with {'icon': 'bx bx-globe'} %}
+					</div>
+					<div class="content-cont">
+						<h3>Expédition internationale</h3>
+						<p>Peu importe où vous êtes, nous livrons dans le monde entier avec un service d’expédition sécurisé et pratique.</p>
+					</div>
+				</div>
+				<div class="card">
+					<div class="pastille-cont nav-cont">
+						{% include 'components/pastille.html.twig' with {'icon': 'bx bxs-credit-card'} %}
+					</div>
+					<div class="content-cont">
+						<h3>Paiement en plusieurs fois sans frais</h3>
+						<p>Réglez votre commande en toute sérénité avec nos facilités de paiement à 0% d’intérêt.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="similar">
+			<div class="heading">
+				<div class="title-cont">
+					<h2 class="title">Parcourir plus</h2>
+				</div>
+				{% include "components/link_see.html.twig" with {'route_name': 'app_home_products'} %}
+			</div>
+
+			<div class="articles-cont articles-list">
+				{% for product in similarProducts %}
+					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
+
+					<a href="{{ path('app_product_shop', {'id': product.id }) }}">
+						{% include "components/product_card.html.twig" with {
+        'image': imagePath,
+        'name': product.name,
+        'price': product.price} %}
+					</a>
+				{% endfor %}
+
+			</div>
+
+		</section>
 	</main>
 	{% include "components/footer.html.twig" %}
 {% endblock %}

@@ -33,16 +33,6 @@
 		}
 	}
 }
-.popular {
-	.articles-cont {
-		max-width: 1400px;
-		display: grid;
-		justify-content: space-between;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 2rem;
-		margin-top: 2rem;
-	}
-}
 .testimonial {
 	position: relative;
 	background: var(--color-dark-gray);
