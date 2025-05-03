@@ -25,14 +25,22 @@
 					<h2 class="title">Les plus populaires</h2>
 					<p>Les incontournables de FlexFit, plébiscités par les sportifs pour leur technologie et leur confort.</p>
 				</div>
-				{% include "components/link_see.html.twig" with {'route_name': 'app_home'} %}
+				{% include "components/link_see.html.twig" with {'route_name': 'app_home_products'} %}
+
 			</div>
-			<div
-				class="articles-cont">
-				{# todo #}
-				{% for i in 0..2 %}
-					{% include "components/product_card.html.twig" with {'image': 'images/todo.png', 'name': 'Pull FlexFit Performance', 'price': '149.99'} %}
+			<div class="articles-cont articles-list">
+				{% for product in products %}
+					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
+
+					<a href="{{ path('app_product_shop', {'id': product.id }) }}">
+						{% include "components/product_card.html.twig" with {
+        'image': imagePath,
+        'name': product.name,
+        'price': product.price
+    } %}
+					</a>
 				{% endfor %}
+
 			</div>
 		</section>
 
@@ -69,13 +77,12 @@
 					<h2 class="title">Nos collections</h2>
 					<p>Découvrez nos 3 gammes, adaptées à tous</p>
 				</div>
-				{% include "components/link_see.html.twig" with {'route_name': 'app_home'} %}
+				{% include "components/link_see.html.twig" with {'route_name': 'app_home_products'} %}
 			</div>
-			{# todo avec categories #}
 			<div class="collections-cards-cont">
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Homme', 'collection_id': 1} %}
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Femme', 'collection_id': 2} %}
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Accessoires', 'collection_id': 3} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-homme.jpg', 'name': 'Homme', 'collection_id': 1} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-femme.jpg', 'name': 'Femme', 'collection_id': 2} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-accessoires.jpg', 'name': 'Accessoires', 'collection_id': 3} %}
 			</div>
 
 		</section>
@@ -96,7 +103,7 @@
 		<section class="arguments">
 			<div class="titre-cont">
 				<h2>Pourquoi choisir FlexFit ?</h2>
-				<p>L’innovation au service de votre performance.</p>
+				<p>L'innovation au service de votre performance.</p>
 			</div>
 			<div class="cards-cont">
 				<div class="card">
