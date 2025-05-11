@@ -40,17 +40,16 @@
 					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
 
 					<a href="{{ path('app_product_shop', {'id': product.id}) }}">
-						<a href="{{ path('app_product_shop', {'id': product.id }) }}">
-							{% include "components/product_card.html.twig" with {
+						{% include "components/product_card.html.twig" with {
         'image': imagePath,
         'name': product.name,
         'price': product.price
     } %}
-						</a>
-					{% endfor %}
-				</div>
-			</section>
+					</a>
+				{% endfor %}
+			</div>
+		</section>
 
-		</main>
-		{% include "components/footer.html.twig" %}
-	{% endblock %}
+	</main>
+	{% include "components/footer.html.twig" %}
+{% endblock %}
