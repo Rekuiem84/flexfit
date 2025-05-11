@@ -14,7 +14,7 @@
 					de pointe</h1>
 				<p>Optimisez vos performances et accélérez votre récupération grâce à des vêtements de sport intelligents intégrant une technologie de compression adaptative et des capteurs de suivi musculaire.</p>
 				<div class="cta-cont">
-					{% include "components/link_to.html.twig" with {'route_name': 'app_home','text': 'Voir les produits'} %}
+					{% include "components/link_to.html.twig" with {'route_name': 'app_home_products','text': 'Voir les produits'} %}
 				</div>
 			</div>
 		</section>
@@ -29,7 +29,7 @@
 
 			</div>
 			<div class="articles-cont articles-list">
-				{% for product in products %}
+				{% for product in popularProducts %}
 					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
 
 					<a href="{{ path('app_product_shop', {'id': product.id }) }}">
