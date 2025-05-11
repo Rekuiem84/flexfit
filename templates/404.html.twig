@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée - FlexFit
+{% endblock %}
+
+{% block body %}
+{% include "components/header.html.twig" %}
+<main class="index">
+	<section class="hero" style="background-image: linear-gradient( rgba(0, 0, 0, var(--_darkness)), rgba(0, 0, 0, var(--_darkness)) ), url('{{ asset('images/hero-image.png') }}');">
+
+		<div class="content">
+			<h1>Vous semblez perdu</h1>
+			<p>Pas d'inquiétude, retournons à l'accueil.</p>
+			<div class="cta-cont">
+				{% include "components/link_to.html.twig" with {'route_name': 'app_home','text': 'Retour à l\'accueil'} %}
+				</div>
+			</div>
+		</section>
+	</main>
+	{% include "components/footer.html.twig" %}
+{% endblock %}
