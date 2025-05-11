@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	{% include "components/header.html.twig" %}
+	<main class="cgv">
+		<section class="legal-hero">
+			<div class="content">
+				<h1>Cookies</h1>
+				<p>Bienvenue dans notre espace d’informations légales : transparence et engagement sont au cœur de notre projet.</p>
+			</div>
+		</section>
+		<section class="legal-body">
+			<h2>Politique de cookies – FlexFit</h2>
+
+			<p>
+				<i>Dernière mise à jour : Avril 2025</i>
+			</p>
+
+			<ol>
+				<div>
+					<li>Qu’est-ce qu’un cookie ?</li>
+					<p>Un cookie est un petit fichier texte enregistré sur votre appareil (ordinateur, smartphone, tablette) lors de votre visite sur un site internet. Il permet de stocker des informations pour améliorer votre navigation, personnaliser votre expérience utilisateur ou analyser le trafic du site.</p>
+				</div>
+
+				<div>
+					<li>Pourquoi utilisons-nous des cookies ?</li>
+					<p>Nous utilisons des cookies pour plusieurs raisons :</p>
+					<ul>
+						<li>
+							<strong>Cookies strictement nécessaires</strong>
+							: indispensables pour le bon fonctionnement du site (exemple : panier d’achat, connexion à votre compte).</li>
+						<li>
+							<strong>Cookies de performance</strong>
+							: pour analyser l’utilisation de notre site et en améliorer les fonctionnalités (exemple : Google Analytics).</li>
+						<li>
+							<strong>Cookies de personnalisation</strong>
+							: pour mémoriser vos préférences (exemple : langue choisie, région).</li>
+						<li>
+							<strong>Cookies publicitaires</strong>
+							: pour vous proposer des publicités pertinentes basées sur vos centres d’intérêt.</li>
+					</ul>
+				</div>
+
+				<div>
+					<li>Quels types de cookies utilisons-nous ?</li>
+					<p>La liste détaillée des cookies utilisés sera disponible dans notre
+						<a href="#">Gestionnaire de cookies</a>.</p>
+				</div>
+
+				<div>
+					<li>Gestion des cookies</li>
+					<p>Lors de votre première visite sur flexfit.fr, un bandeau vous informe de l’utilisation de cookies.<br>
+						Vous avez le choix :</p>
+					<ul>
+						<li>Accepter tous les cookies</li>
+						<li>Refuser tous les cookies non essentiels</li>
+						<li>Personnaliser vos préférences</li>
+					</ul>
+					<p>À tout moment, vous pouvez modifier vos choix en accédant à notre
+						<a href="#">Gestionnaire de cookies</a>.</p>
+				</div>
+
+				<div>
+					<li>Comment désactiver les cookies via votre navigateur ?</li>
+					<p>Vous pouvez configurer votre navigateur pour refuser automatiquement les cookies ou pour être alerté avant qu’un cookie ne soit installé. Chaque navigateur propose des paramètres spécifiques :</p>
+					<ul>
+						<li>
+							<strong>Chrome</strong>
+							: Paramètres &gt; Confidentialité et sécurité &gt; Cookies et autres données du site</li>
+						<li>
+							<strong>Firefox</strong>
+							: Options &gt; Vie privée et sécurité &gt; Cookies et données de sites</li>
+						<li>
+							<strong>Safari</strong>
+							: Préférences &gt; Confidentialité</li>
+						<li>
+							<strong>Edge</strong>
+							: Paramètres &gt; Cookies et autorisations de site</li>
+					</ul>
+					<p>
+						<em>Attention : refuser certains cookies peut dégrader votre expérience utilisateur sur notre site.</em>
+					</p>
+				</div>
+			</ol>
+
+
+		</section>
+
+	</main>
+	{% include "components/footer.html.twig" %}
+{% endblock %}

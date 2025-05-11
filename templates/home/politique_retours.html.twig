@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+	{% include "components/header.html.twig" %}
+	<main class="cgv">
+		<section class="legal-hero">
+			<div class="content">
+				<h1>Politique de remboursements et retours</h1>
+				<p>Chez FlexFit, nous facilitons vos retours pour vous garantir une expérience d’achat sereine et sans stress.</p>
+			</div>
+		</section>
+		<section class="legal-body">
+			<h2>Politique de remboursements et retours – FlexFit</h2>
+
+			<p>
+				<i>Dernière mise à jour : Avril 2025</i>
+			</p>
+			<p>Chez FlexFit, votre satisfaction est notre priorité. Si votre commande ne vous convient pas ou si vous souhaitez échanger un produit, nous vous proposons une politique de retours simple et transparente.</p>
+
+			<ol>
+				<div>
+					<li>Délai de rétractation</li>
+					<p>Conformément à la législation en vigueur, vous disposez d’un délai de 30 jours à compter de la réception de votre commande pour exercer votre droit de rétractation, sans avoir à justifier de motif.</p>
+				</div>
+
+				<div>
+					<li>Conditions de retour</li>
+					<p>Pour être éligible à un retour :</p>
+					<p>Le produit doit être neuf, non porté, non lavé, et dans son emballage d’origine.<br>
+						Les étiquettes du produit doivent être encore attachées.<br>
+						L’article ne doit pas présenter de traces d’utilisation, de lavage ou de détérioration.</p>
+					<p>Les produits personnalisés ou sur mesure ne peuvent pas être retournés, sauf en cas de défaut de fabrication.</p>
+				</div>
+
+				<div>
+					<li>Procédure de retour</li>
+					<p>Pour effectuer un retour :</p>
+					<p>Contactez notre service client à
+						<a href="mailto:sav@flexfit.fr">sav@flexfit.fr</a>
+						en précisant votre numéro de commande.<br>
+						Nous vous transmettrons l’adresse de retour ainsi que les instructions détaillées.<br>
+						Renvoyez l’article par vos propres moyens, en veillant à conserver la preuve d’envoi.</p>
+					<p>Les frais de retour sont à la charge du client, sauf en cas d’erreur de notre part (produit défectueux ou non conforme).</p>
+				</div>
+
+				<div>
+					<li>Remboursement</li>
+					<p>Après réception et inspection du produit retourné, nous procéderons au remboursement :</p>
+					<p>Le remboursement est effectué sous 14 jours ouvrés après validation du retour.<br>
+						Il sera réalisé via le même moyen de paiement que celui utilisé lors de votre commande.<br>
+						Les frais de livraison initiaux ne sont pas remboursés, sauf si le retour est dû à une erreur de notre part.</p>
+				</div>
+
+				<div>
+					<li>Échanges</li>
+					<p>Si vous souhaitez échanger un produit (changement de taille, couleur, etc.), merci de suivre la même procédure que pour un retour classique.<br>
+						Après réception de l’article retourné, nous expédierons le nouvel article sans frais supplémentaires d’envoi en France métropolitaine.</p>
+				</div>
+
+				<div>
+					<li>Produits défectueux ou erreur de livraison</li>
+					<p>Si vous recevez un produit défectueux ou non conforme à votre commande :</p>
+					<p>Contactez notre service client dans les 48h suivant la réception.<br>
+						Nous organiserons à nos frais le remplacement ou le remboursement du produit.</p>
+				</div>
+
+				<div>
+					<li>Adresse de retour</li>
+					<p>FlexFit<br>
+						Service Retours<br>
+						10 rue de la Performance, 33000 Bordeaux, France</p>
+					<p>(Veuillez ne pas renvoyer un colis sans avoir d’abord contacté notre service client.)</p>
+				</div>
+			</ol>
+
+
+		</section>
+
+	</main>
+	{% include "components/footer.html.twig" %}
+{% endblock %}
