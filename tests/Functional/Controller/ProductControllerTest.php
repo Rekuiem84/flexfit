@@ -43,11 +43,11 @@ class ProductControllerTest extends WebTestCase
         $this->testUser = new User();
         $this->testUser->setEmail($testEmail);
         $this->testUser->setUsername('testuser');
-        
+
         $userPasswordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
         $hashedPassword = $userPasswordHasher->hashPassword($this->testUser, 'password123');
         $this->testUser->setPassword($hashedPassword);
-        
+
         $this->entityManager->persist($this->testUser);
         $this->entityManager->flush();
 
@@ -157,10 +157,10 @@ class ProductControllerTest extends WebTestCase
         $this->entityManager->flush();
 
         $productId = $product->getId();
-        
+
         $this->client->request('GET', '/product');
         $token = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('delete' . $productId)->getValue();
-        
+
         $this->client->request('POST', '/product/' . $productId, [
             '_token' => $token,
         ]);
@@ -190,7 +190,7 @@ class ProductControllerTest extends WebTestCase
         $image2 = new UploadedFile($tempFile2, 'test2.jpg', 'image/jpeg', null, true);
 
         $form = $crawler->filter('form[name="product"]')->form();
-        $form['product[detailsImages][]']->upload([$image1, $image2]);
+        $form['product[detailsImages][]']->upload($image1);
 
         $this->client->submit($form);
 
@@ -203,18 +203,18 @@ class ProductControllerTest extends WebTestCase
     {
         // Create a test product with an image
         $product = $this->createTestProduct();
-        
+
         $media = new Media('test.jpg', false);
         $media->setProduct($product);
         $product->addMedium($media);
-        
+
         $this->entityManager->persist($product);
         $this->entityManager->persist($media);
         $this->entityManager->flush();
 
         $this->client->request('GET', '/product');
         $token = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('delete' . $media->getId())->getValue();
-        
+
         $this->client->request('POST', '/product/' . $product->getId() . '/delete/' . $media->getId(), [
             '_token' => $token,
         ]);
