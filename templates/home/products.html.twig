@@ -6,7 +6,7 @@
 {% block body %}
 	{% include "components/header.html.twig" %}
 	<main class="products-home">
-		<section class="products-hero">
+		<section class="simple-hero">
 			<div class="content">
 				<h1>Découvrez la collection FlexFit</h1>
 				<p>Explorez notre gamme de vêtements de sport intelligents alliant technologie de compression avancée et capteurs de suivi musculaire pour optimiser vos entraînements et accélérer votre récupération.</p>
@@ -33,9 +33,7 @@
 					{% endfor %}
 				</div>
 			</aside>
-			<div
-				class="articles-cont">
-				{# todo #}
+			<div class="articles-cont">
 				{% for product in products %}
 					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
 

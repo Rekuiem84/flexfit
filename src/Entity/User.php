@@ -267,7 +267,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->orderHistories->contains($orderHistory)) {
             $this->orderHistories->add($orderHistory);
-            $orderHistory->setUserId($this);
+            $orderHistory->setUser($this);
         }
 
         return $this;
@@ -277,8 +277,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->orderHistories->removeElement($orderHistory)) {
             // set the owning side to null (unless already changed)
-            if ($orderHistory->getUserId() === $this) {
-                $orderHistory->setUserId(null);
+            if ($orderHistory->getUser() === $this) {
+                $orderHistory->setUser(null);
             }
         }
 
