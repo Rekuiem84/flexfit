@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement annulé
+{% endblock %}
+
+{% block body %}
+	{% include "components/header.html.twig" %}
+	<main class="cart-cancel">
+		<section class="cancel-message">
+			<div class="pastille-cont">
+				{% include 'components/pastille.html.twig' with {'icon': 'bx bx-x-circle'} %}
+			</div>
+			<h1>Paiement annulé</h1>
+			<p>Votre paiement a été annulé. Si vous souhaitez réessayer, vous pouvez retourner à la page du produit.</p>
+			<a href="{{ path('app_home') }}" class="button">Retour à l'accueil</a>
+		</section>
+	</main>
+	{% include "components/footer.html.twig" %}
+{% endblock %}

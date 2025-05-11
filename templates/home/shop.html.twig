@@ -8,12 +8,19 @@
 	<main class="shop">
 		<section class="product">
 			<div class="images-cont">
-				<div class="images-details-wrapper">
-					<div class="img-cont"><img src="" alt=""></div>
+				<div class="images-details-wrapper" id="shop-image-details-cont">
+					{% for media in product.media %}
+						{% if not media.isMainImage %}
+							<div class="img-cont"><img src="{{ asset('uploads/images/' ~ media.url) }}" alt="{{ product.name }}">
+							</div>
+						{% endif %}
+					{% endfor %}
 				</div>
-				<div class="image-main-cont">
-					<img src="" alt="">
+				<div class="image-main-cont" id="shop-image-main-cont">
+					{% set mainImage = product.getMainImage() %}
+					<img class="main-image" src="{{ mainImage ? asset('uploads/images/' ~ mainImage.url) : asset('images/default.png') }}" alt="{{ product.name }}">
 					<div class="message pastille-cont">
+						<img src="{{ asset('images/cursor.png')}}" alt="cursor">
 						<p>Survolez pour zoomer</p>
 					</div>
 				</div>
@@ -23,33 +30,39 @@
 				<p class="product__price">{{product.price|number_format(2, ',', '')}}€</p>
 				<p class="product__description">{{product.description}}</p>
 				<div class="sizes-cont">
-					<label for="">XS<input type="radio"></label>
-					<label for="">S<input type="radio"></label>
-					<label for="">M<input type="radio"></label>
-					<label for="">L<input type="radio"></label>
-					<label for="">XL<input type="radio"></label>
-					<label for="">XXL<input type="radio"></label>
+					{% for size in sizes %}
+						<label>
+							{{ size.name }}
+							<input type="radio" name="size" value="{{ size.id }}" for="size" required>
+						</label>
+					{% endfor %}
 				</div>
-				<button class="add-panier">Ajouter au panier</button>
-				<button class="buy">Acheter maintenant</button>
+				<button class="add-panier button">Ajouter au panier</button>
+				<button class="buy button">Acheter maintenant</button>
 				<div class="details-wrapper">
-					<details>
-						<summary>Garantie</summary>
-						<div>
+					<details name="details">
+						<summary>Garantie
+							<i class='arrow bx bx-chevron-down'></i>
+						</summary>
+						<div class="content-cont">
 							<p>Chaque achat est couvert par notre engagement envers la qualité. Profitez d’une tranquillité d’esprit avec une garantie de 90 jours, assurant satisfaction et fiabilité de votre produit.</p>
 						</div>
 					</details>
-					<details>
-						<summary>Informations sur la livraison</summary>
-						<div>
+					<details name="details">
+						<summary>Informations sur la livraison
+							<i class='arrow bx bx-chevron-down'></i>
+						</summary>
+						<div class="content-cont">
 							<p>Chaque achat est couvert par notre engagement envers la qualité. Profitez d’une tranquillité d’esprit avec une garantie de 90 jours, assurant satisfaction et fiabilité de votre produit.</p>
 						</div>
 					</details>
-					<details>
-						<summary>Support</summary>
-						<div>
+					<details name="details">
+						<summary>Support
+							<i class='arrow bx bx-chevron-down'></i>
+						</summary>
+						<div class="content-cont">
 							<p>Pour toute question, merci de nous contacter depuis
-								<a href="{{path('app_home')}}">cette page</a>
+								<a href="{{path('app_home')}}">cette page</a>.
 							</p>
 						</div>
 					</details>
@@ -96,10 +109,20 @@
 				</div>
 			</div>
 		</section>
+		<section class="other">
+			<div class="content-cont">
+				<h2>Performance et précision à chaque mouvement</h2>
+				<p>Alliez performance, confort et fiabilité avec un équipement pensé pour s’adapter à votre rythme. Que ce soit pour vos entraînements quotidiens ou vos défis les plus exigeants, chaque détail est conçu pour optimiser vos sensations et vos résultats.</p>
+			</div>
+			<div class="img-cont">
+				<img class="main-image" src="{{ mainImage ? asset('uploads/images/' ~ mainImage.url) : asset('images/default.png') }}" alt="{{ product.name }}">
+			</div>
+
+		</section>
 		<section class="similar">
 			<div class="heading">
 				<div class="title-cont">
-					<h2 class="title">Parcourir plus</h2>
+					<h2 class="title">Similaires</h2>
 				</div>
 				{% include "components/link_see.html.twig" with {'route_name': 'app_home_products'} %}
 			</div>
