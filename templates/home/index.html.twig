@@ -30,9 +30,18 @@
 			<div
 				class="articles-cont">
 				{# todo #}
-				{% for i in 0..2 %}
-					{% include "components/product_card.html.twig" with {'image': 'images/todo.png', 'name': 'Pull FlexFit Performance', 'price': '149.99'} %}
+				{% for product in popularProducts %}
+					{% set imagePath = product.mainImage ? 'uploads/images/' ~ product.mainImage.url : 'images/default.png' %}
+
+					<a href="{{ path('app_product_shop', {'id': product.id}) }}">
+						{% include "components/product_card.html.twig" with {
+        'image': imagePath,
+        'name': product.name,
+        'price': product.price
+    } %}
+					</a>
 				{% endfor %}
+
 			</div>
 		</section>
 
@@ -73,9 +82,9 @@
 			</div>
 			{# todo avec categories #}
 			<div class="collections-cards-cont">
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Homme', 'collection_id': 1} %}
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Femme', 'collection_id': 2} %}
-				{% include "components/collection_card.html.twig" with {'image': 'images/todo.png', 'name': 'Accessoires', 'collection_id': 3} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-homme.jpg', 'name': 'Homme', 'collection_id': 1} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-femme.jpg', 'name': 'Femme', 'collection_id': 2} %}
+				{% include "components/collection_card.html.twig" with {'image': 'images/category-accessoires.jpg', 'name': 'Accessoires', 'collection_id': 3} %}
 			</div>
 
 		</section>

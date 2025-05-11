@@ -59,10 +59,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: SavedProduct::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $savedProducts;
 
+    /**
+     * @var Collection<int, OrderHistory>
+     */
+    #[ORM\OneToMany(targetEntity: OrderHistory::class, mappedBy: 'user_id')]
+    private Collection $orderHistories;
+
     public function __construct()
     {
         $this->seances = new ArrayCollection();
         $this->savedProducts = new ArrayCollection();
+        $this->orderHistories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -242,6 +249,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($savedProduct->getUser() === $this) {
                 $savedProduct->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderHistory>
+     */
+    public function getOrderHistories(): Collection
+    {
+        return $this->orderHistories;
+    }
+
+    public function addOrderHistory(OrderHistory $orderHistory): static
+    {
+        if (!$this->orderHistories->contains($orderHistory)) {
+            $this->orderHistories->add($orderHistory);
+            $orderHistory->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderHistory(OrderHistory $orderHistory): static
+    {
+        if ($this->orderHistories->removeElement($orderHistory)) {
+            // set the owning side to null (unless already changed)
+            if ($orderHistory->getUserId() === $this) {
+                $orderHistory->setUserId(null);
             }
         }
 
