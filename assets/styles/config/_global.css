@@ -39,3 +39,35 @@ section:nth-of-type(n + 2) {
 	gap: 2rem;
 	margin-top: 2rem;
 }
+.simple-hero {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
+	background: var(--color-dark-gray);
+	padding-block: 4rem;
+	border-radius: 1rem;
+	padding-inline: clamp(1.5rem, 0.8919rem + 2.5946vw, 3rem);
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		text-align: center;
+		align-items: center;
+
+		& h1 {
+			font-size: var(--fs-xxl);
+			text-wrap: balance;
+			color: var(--color-white);
+			line-height: 1;
+			font-weight: 500;
+		}
+		& > p {
+			font-size: var(--fs-text-plus);
+			text-wrap: balance;
+			color: var(--color-white-transparent-60);
+			max-width: 70ch;
+		}
+	}
+}
