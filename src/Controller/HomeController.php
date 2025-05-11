@@ -14,12 +14,33 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(OrderHistoryRepository $orderHistoryRepository): Response
+    public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository, OrderHistoryRepository $orderHistoryRepository): Response
     {
-        $popularProducts = $orderHistoryRepository->getMostPopularProducts();
-        // dd($popularProducts);
+        $allProducts = $productRepository->findBy(['isAvailable' => true]);
+        shuffle($allProducts);
+        $randomProducts = array_slice($allProducts, 0, 3);
 
-        return $this->render('home/index.html.twig', ['popularProducts' => $popularProducts]);
+        $popularProducts = $orderHistoryRepository->getMostPopularProducts();
+
+        return $this->render('home/index.html.twig', [
+            'products' => $randomProducts,
+            'categories' => $categoryRepository->getAll(),
+            'popularProducts' => $popularProducts
+        ]);
+    }
+    #[Route('/collections', name: 'app_collections')]
+    public function collections(): Response
+    {
+        return $this->render('home/collections.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    #[Route('/collections/{id}', name: 'app_collections_show', methods: ['GET'])]
+    public function collections_show(): Response
+    {
+        return $this->render('home/collection_show.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
     #[Route('/products', name: 'app_home_products')]
     public function product(ProductRepository $productRepository, CategoryRepository $categoryRepository, Request $request): Response
