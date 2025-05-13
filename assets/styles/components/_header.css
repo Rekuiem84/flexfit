@@ -39,3 +39,19 @@ header {
 		max-width: 170px;
 	}
 }
+.header--app {
+	position: sticky;
+	top: 0;
+	display: block;
+	width: 100%;
+	translate: 0 -1rem;
+
+	.nav {
+		justify-content: space-between;
+		padding-inline: 0;
+
+		&::before {
+			display: none;
+		}
+	}
+}

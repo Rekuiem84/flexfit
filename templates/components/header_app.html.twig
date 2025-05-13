@@ -1,0 +1,12 @@
+<header class="header--app">
+	<nav class="nav">
+		<a href="{{ path('app_home') }}">
+			<div class="logo-cont">
+				<img src="{{ asset('images/flexfit-logo-blanc.png') }}" alt="Logo">
+			</div>
+		</a>
+	</ul>
+	<div class="cta-cont">
+		{% include "components/link_to.html.twig" with {'route_name': 'app_home_products','text': 'Nos produits'} %}
+	</div>
+</header>
