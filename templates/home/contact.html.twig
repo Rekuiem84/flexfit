@@ -5,14 +5,68 @@
 
 {% block body %}
 	{% include "components/header.html.twig" %}
-	<main class="contact">
+	<main class="contact-page">
 		<section class="simple-hero">
 			<div class="content">
 				<h1>Contactez-nous</h1>
 				<p>Une question, un besoin d’information ? Notre équipe est là pour vous aider ! Remplissez le formulaire ou contactez-nous directement.</p>
 			</div>
 		</section>
+		<section class="qna">
+			<div class="heading">
+				<h2>Questions fréquentes</h2>
+				<p>Besoin d’aide ? Voici les réponses à vos questions les plus fréquentes !</p>
+			</div>
+			<div class="details-wrapper">
+				<details name="details">
+					<summary>Quels types de vêtements propose FlexFit ?
+						<i class='arrow bx bx-chevron-down'></i>
+					</summary>
+					<div class="content-cont">
+						<p>Nous proposons une large gamme de vêtements de sport pour hommes et femmes : leggings, t-shirts, sweats, brassières et accessoires. Nos produits sont conçus pour allier performance, confort et style, avec des matières techniques de haute qualité.</p>
+					</div>
+				</details>
 
+				<details name="details">
+					<summary>Comment choisir la bonne taille ?
+						<i class='arrow bx bx-chevron-down'></i>
+					</summary>
+					<div class="content-cont">
+						<p>Nous mettons à votre disposition un guide des tailles détaillé pour chaque type de vêtement. Il vous suffit de comparer vos mensurations avec les valeurs indiquées pour trouver la taille qui vous conviendra le mieux. En cas de doute, privilégiez la taille supérieure pour plus de confort.</p>
+					</div>
+				</details>
+
+				<details name="details">
+					<summary>Est-ce que les vêtements FlexFit sont adaptés à tous les sports ?
+						<i class='arrow bx bx-chevron-down'></i>
+					</summary>
+					<div class="content-cont">
+						<p>Oui, nos vêtements sont conçus pour répondre aux exigences de nombreux sports, qu’ils soient doux comme le yoga ou plus intensifs comme le cross-training, la course ou la musculation. Les matériaux respirants, les coutures renforcées et les coupes ergonomiques garantissent un confort optimal pour toutes vos activités.</p>
+					</div>
+				</details>
+
+				<details name="details">
+					<summary>Puis-je retourner un article ?
+						<i class='arrow bx bx-chevron-down'></i>
+					</summary>
+					<div class="content-cont">
+						<p>Oui, vous disposez de 30 jours à compter de la réception de votre commande pour effectuer un retour. Les articles doivent être neufs, non portés, non lavés et dans leur emballage d’origine. Pour lancer une procédure de retour, contactez notre service client à l’adresse
+							<a href="mailto:sav@flexfit.fr">sav@flexfit.fr</a>.</p>
+					</div>
+				</details>
+			</div>
+		</section>
+
+		<section class="contact">
+			<div class="heading">
+				<h2>Vous avez encore des questions ?</h2>
+				<p>Envoyez-nous un message ci-dessous et nous vous répondrons dans un délai d’un jour ouvrable.</p>
+			</div>
+			<div class="form-cont">
+				{{ include('home/_contact_form.html.twig', {'button_label': 'Envoyer'}) }}
+			</div>
+
+		</section>
 	</main>
 	{% include "components/footer.html.twig" %}
 {% endblock %}

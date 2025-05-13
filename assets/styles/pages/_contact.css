@@ -1,0 +1,76 @@
+.contact-page {
+	.heading {
+		h2 {
+			font-size: var(--fs-l-plus);
+			margin-bottom: 0.5em;
+			line-height: 1;
+		}
+		p {
+			color: var(--color-white-light-60);
+		}
+	}
+	.qna {
+		width: min(100%, 850px);
+		margin-inline: auto;
+		padding-inline: 1rem;
+		padding-block: 3rem;
+
+		.details-wrapper {
+			max-width: 800px;
+			margin-inline: auto;
+			margin-top: 2rem;
+			gap: 1rem;
+
+			details {
+				background-color: var(--color-dark-gray);
+				border-radius: 1rem;
+				padding-left: 1rem;
+			}
+
+			summary {
+				font-size: var(--fs-text-plus);
+			}
+			p,
+			li {
+				font-size: var(--fs-text);
+				line-height: 1.5;
+			}
+		}
+	}
+	.contact {
+		padding-bottom: 5rem;
+		.form-cont {
+			width: min(100%, 650px);
+			margin-inline: auto;
+			margin-top: 3rem;
+
+			form > div,
+			#contact_form > div {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+			label {
+				font-size: var(--fs-text);
+				margin-top: 0.5rem;
+			}
+			input,
+			textarea {
+				background-color: var(--color-white);
+				padding: 1rem;
+				border-radius: 0.5rem;
+				&::placeholder {
+					font-family: var(--font-family-sans-serif);
+				}
+			}
+			textarea {
+				resize: vertical;
+			}
+			button {
+				margin-top: 2rem;
+				width: 100%;
+				border-radius: 0.5rem;
+			}
+		}
+	}
+}
