@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const passwordInput = document.getElementById("inputPassword");
+	const passwordInput = document.querySelector(".inputPassword");
 	const eyeIcon = document.querySelector(".input--password i");
 
 	if (passwordInput && eyeIcon) {
 		eyeIcon.addEventListener("click", () => {
+			console.log(passwordInput);
 			const type =
 				passwordInput.getAttribute("type") === "password" ? "text" : "password";
 			passwordInput.setAttribute("type", type);
@@ -14,3 +15,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 });
+console.log("Password reveal script loaded");

@@ -135,92 +135,6 @@
 					}
 				}
 			}
-			.button {
-				text-align: center;
-				padding: 0.75rem 1rem;
-				border-radius: 100px;
-				font-size: var(--fs-text);
-				border: none;
-				cursor: pointer;
-			}
-			.add-panier {
-				background-color: var(--color-accent);
-				color: var(--color-white);
-			}
-			.buy {
-				background-color: var(--color-white);
-				color: var(--color-black);
-			}
-			.details-wrapper {
-				display: flex;
-				flex-direction: column;
-
-				details {
-					summary {
-						--_arrow-width: 2rem;
-						position: relative;
-						font-size: 1.125rem;
-						font-weight: 500;
-						list-style-type: none;
-						cursor: pointer;
-						text-wrap: pretty;
-						padding-block: 1rem;
-						padding-right: calc(var(--_arrow-width) + 1.5rem);
-						padding-left: 0;
-
-						&::-webkit-details-marker,
-						&::marker {
-							display: none;
-						}
-						.arrow {
-							position: absolute;
-							top: 50%;
-							right: 0.5rem;
-							translate: 0 -50%;
-							color: var(--color-white);
-							width: var(--_arrow-width);
-							display: grid;
-							place-items: center;
-							aspect-ratio: 1;
-
-							&::before {
-								transition: rotate 0.3s;
-							}
-						}
-					}
-					&::details-content {
-						display: block;
-						block-size: 0;
-						overflow: hidden;
-						transition-property: block-size, content-visibility;
-						transition-duration: 0.5s;
-						transition-behavior: allow-discrete;
-					}
-					&[open]::details-content {
-						block-size: auto;
-						block-size: calc-size(auto, size);
-					}
-					&[open] .arrow::before {
-						rotate: 180deg;
-					}
-					.content-cont {
-						padding-right: 2rem;
-						& > * {
-							text-wrap: pretty;
-							line-height: 1.35;
-							color: var(--color-white-light-60);
-							font-size: var(--fs-ls);
-
-							a {
-								text-decoration: underline;
-							}
-						}
-						& > *:last-child {
-							margin-bottom: 1rem;
-						}
-					}
-				}
-			}
 		}
 	}
 	.other {
@@ -260,6 +174,9 @@
 	}
 
 	.similar {
+		.heading {
+			flex-direction: row;
+		}
 		.articles-cont {
 			grid-template-columns: repeat(3, minmax(200px, 1fr));
 			margin-top: 1rem;

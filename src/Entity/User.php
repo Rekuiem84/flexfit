@@ -65,6 +65,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: OrderHistory::class, mappedBy: 'user_id')]
     private Collection $orderHistories;
 
+    #[ORM\Column(length: 25, nullable: true)]
+    private ?string $telephone = null;
+
     public function __construct()
     {
         $this->seances = new ArrayCollection();
@@ -281,6 +284,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $orderHistory->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): static
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }

@@ -1,25 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register
+{% block title %}Inscription - FlexFit
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="module" src="{{ asset('js/password-reveal.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-	<h1>Register</h1>
+	<div class="log-cont">
+		{% include "components/header_app.html.twig" %}
+		<section class="main-log">
 
-	{{ form_errors(registrationForm) }}
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-	{{ form_row(registrationForm.username) }}
-	{{ form_row(registrationForm.agreeTerms) }}
+			{{ form_errors(registrationForm) }}
 
-	<button type="submit" class="btn">Créer mon compte</button>
-	{{ form_end(registrationForm) }}
-	<p>J'ai déjà compte :
-		<a href="{{ path('app_login') }}">me connecter</a>
-	</p>
+			{{ form_start(registrationForm) }}
+			<h1>S'inscrire</h1>
+			<div class="inputs-wrapper">
+				{{ form_row(registrationForm.username) }}
+				{{ form_row(registrationForm.email) }}
 
+				{# Mot de passe avec icône #}
+				<div class="input--password">
+					<label for="inputPassword">Mot de passe</label>
+					<div class="password-cont">
+						{{ form_widget(registrationForm.plainPassword, {
+									attr: {
+										id: 'inputPassword',
+										class: 'inputPassword',
+										autocomplete: 'new-password',
+										placeholder: 'Mot de passe'
+									}
+								}) }}
+						<i class="fa-regular fa-eye"></i>
+					</div>
+				</div>
+
+
+				{{ form_row(registrationForm.telephone) }}
+			</div>
+			{{ form_row(registrationForm.agreeTerms) }}
+
+			<button type="submit" class="button accent">S'inscrire</button>
+			{{ form_end(registrationForm) }}
+		</section>
+		<div class="other-log">
+			<p>J'ai déjà compte :
+				<a href="{{ path('app_login') }}">me connecter</a>
+			</p>
+		</div>
+
+	</div>
 {% endblock %}

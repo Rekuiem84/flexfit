@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ContactFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\OrderHistoryRepository;
 use App\Repository\ProductRepository;
@@ -93,6 +94,14 @@ final class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('/contact', name: 'app_contact', methods: ['GET'])]
+    public function contact(Request $request): Response
+    {
+        $form = $this->createForm(ContactFormType::class);
+        $form->handleRequest($request);
+
+        return $this->render('home/contact.html.twig', ['form' => $form,]);
+    }
     #[Route('/cgv', name: 'app_cgv', methods: ['GET'])]
     public function cgv(): Response
     {

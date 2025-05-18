@@ -3,6 +3,11 @@
 {% block title %}Shop
 {% endblock %}
 
+{% block javascripts %}
+	{{ parent() }}
+	<script type="module" src="{{ asset('js/shop.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 	{% include "components/header.html.twig" %}
 	<main class="shop">
@@ -37,8 +42,8 @@
 						</label>
 					{% endfor %}
 				</div>
-				<button class="add-panier button">Ajouter au panier</button>
-				<button class="buy button">Acheter maintenant</button>
+				<button class="add-panier button accent">Ajouter au panier</button>
+				<button class="buy button white">Acheter maintenant</button>
 				<div class="details-wrapper">
 					<details name="details">
 						<summary>Garantie
