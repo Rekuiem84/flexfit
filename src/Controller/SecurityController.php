@@ -12,8 +12,9 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // todo: remove the commentes
         // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
+        //     return $this->redirectToRoute('appli_index');
         // }
 
         // get the login error if there is one
@@ -28,5 +29,17 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route(path: "/log", name: 'appli_log', methods: ['GET'])]
+    public function log(): Response
+    {
+        // todo: remove the commentes
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('appli_index');
+        // }
+        return $this->render('security/log.html.twig', [
+            'title' => 'Connexion / Inscription'
+        ]);
     }
 }

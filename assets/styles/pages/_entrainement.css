@@ -1,0 +1,115 @@
+.entrainement-container {
+	max-width: 1200px;
+	margin: 2rem auto;
+}
+
+.entrainement-header {
+	margin-bottom: 2rem;
+}
+
+.entrainement-title {
+	color: #333;
+	font-size: 1.8rem;
+	margin-bottom: 1rem;
+}
+
+.entrainement-buttons {
+	display: flex;
+	gap: 1rem;
+}
+
+.entrainement-button {
+	padding: 0.8rem 1.5rem;
+	border-radius: 4px;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: all 0.3s;
+}
+
+.entrainement-button-primary {
+	background-color: #007bff;
+	color: white;
+	border: none;
+}
+
+.entrainement-button-primary:hover {
+	background-color: #0056b3;
+}
+
+.entrainement-button-secondary {
+	background-color: transparent;
+	color: #007bff;
+	border: 2px solid #007bff;
+}
+
+.entrainement-button-secondary:hover {
+	background-color: #f0f7ff;
+}
+
+.entrainement-card {
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 1.5rem;
+}
+
+.entrainement-card-title {
+	color: #444;
+	font-size: 1.4rem;
+	margin-bottom: 1.5rem;
+}
+
+.entrainement-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.entrainement-table th,
+.entrainement-table td {
+	padding: 1rem;
+	text-align: left;
+	border-bottom: 1px solid #eee;
+}
+
+.entrainement-table th {
+	background-color: #f8f9fa;
+	font-weight: 600;
+	color: #333;
+}
+
+.entrainement-table tr:last-child td {
+	border-bottom: none;
+}
+
+.entrainement-actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.entrainement-action-button {
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 0.9rem;
+	transition: background-color 0.3s;
+}
+
+.entrainement-action-button-info {
+	background-color: #17a2b8;
+	color: white;
+}
+
+.entrainement-action-button-info:hover {
+	background-color: #138496;
+}
+
+.entrainement-action-button-warning {
+	background-color: #ffc107;
+	color: #212529;
+}
+
+.entrainement-action-button-warning:hover {
+	background-color: #e0a800;
+}

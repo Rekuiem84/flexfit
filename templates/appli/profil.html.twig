@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<div class="profil-container">
+		<div class="profil-card">
+			<div class="profil-header">
+				<h1 class="profil-title">{{ title }}</h1>
+				<a href="{{ path('appli_profil_edit', {id: user.id}) }}" class="profil-edit-button">Modifier</a>
+			</div>
+
+			<div class="profil-content">
+				<div class="profil-section">
+					<h2 class="profil-section-title">Informations personnelles</h2>
+					<table class="profil-table">
+						<tr>
+							<th>Nom</th>
+							<td>{{ user.name }}</td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td>{{ user.email }}</td>
+						</tr>
+						<tr>
+							<th>Âge</th>
+							<td>{{ user.age }}
+								ans</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="profil-section">
+					<h2 class="profil-section-title">Mesures</h2>
+					<table class="profil-table">
+						<tr>
+							<th>Taille</th>
+							<td>{{ user.height }}
+								cm</td>
+						</tr>
+						<tr>
+							<th>Poids</th>
+							<td>{{ user.weight }}
+								kg</td>
+						</tr>
+						<tr>
+							<th>Objectif</th>
+							<td>{{ user.goal }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="profil-progress">
+				<h2 class="profil-section-title">Progression</h2>
+				<div class="profil-progress-bar">
+					<div class="profil-progress-fill" style="width: {{ user.progress }}%"></div>
+				</div>
+				<p class="profil-progress-text">{{ user.progress }}% de l'objectif atteint</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -48,12 +48,19 @@ class Product
   #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product')]
   private Collection $orderItems;
 
+  /**
+   * @var Collection<int, User>
+   */
+  #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'products')]
+  private Collection $users;
+
 
   public function __construct()
   {
     $this->media = new ArrayCollection();
     $this->savedProducts = new ArrayCollection();
     $this->orderItems = new ArrayCollection();
+    $this->users = new ArrayCollection();
   }
 
   public function getId(): ?int
@@ -225,6 +232,33 @@ class Product
           if ($orderItem->getProduct() === $this) {
               $orderItem->setProduct(null);
           }
+      }
+
+      return $this;
+  }
+
+  /**
+   * @return Collection<int, User>
+   */
+  public function getUsers(): Collection
+  {
+      return $this->users;
+  }
+
+  public function addUser(User $user): static
+  {
+      if (!$this->users->contains($user)) {
+          $this->users->add($user);
+          $user->addProduct($this);
+      }
+
+      return $this;
+  }
+
+  public function removeUser(User $user): static
+  {
+      if ($this->users->removeElement($user)) {
+          $user->removeProduct($this);
       }
 
       return $this;

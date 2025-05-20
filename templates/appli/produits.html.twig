@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<div class="produits-container">
+		<div class="produits-header">
+			<h1 class="produits-title">{{ title }}</h1>
+			<a href="{{ path('appli_produits_new') }}" class="produits-button">Nouveau produit</a>
+		</div>
+
+		{% if products is empty %}
+			<p class="produits-empty">Vous n'avez pas encore de produits dans votre collection.</p>
+		{% else %}
+			<div class="produits-grid">
+				{% for product in products %}
+					<div class="produit-card">
+						{% if product.mainImage %}
+							<img src="{{ asset('uploads/images/' ~ product.mainImage.url) }}" alt="{{ product.name }}" class="produit-image">
+						{% else %}
+							<div class="produit-image-placeholder">
+								<i class="fas fa-image"></i>
+								Pas d'image
+							</div>
+						{% endif %}
+						<div class="produit-details">
+							<h3 class="produit-name">{{ product.name }}</h3>
+							<a href="{{ path('appli_produits_delete', {'id': product.id}) }}" class="produit-action-button">
+								Supprimer
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

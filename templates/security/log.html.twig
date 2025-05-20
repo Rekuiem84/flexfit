@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<main class="log" style="background-image: url('{{ asset('images/smoke.jpg') }}');">
+		{% include "components/header_app.html.twig" %}
+		<div class="content" style="background-image: url('{{ asset('images/log-photo.jpg') }}');">
+			<div class="log-cont">
+				<div class="img-cont">
+					<img src="{{asset('images/flexfit-logo-noir.png')}}" alt="logo">
+					<p>Connect</p>
+				</div>
+				<div class="buttons-cont">
+					<a href="{{path('app_login')}}" class="button white">Se connecter</a>
+
+					<a href="{{path('app_register')}}" class="underline">S'inscrire</a>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

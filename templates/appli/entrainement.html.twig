@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<div class="entrainement-container">
+		<div class="entrainement-header">
+			<h1 class="entrainement-title">{{ title }}</h1>
+			<div class="entrainement-buttons">
+				<a href="{{ path('appli_entrainement_start') }}" class="entrainement-button entrainement-button-primary">Commencer</a>
+				<a href="{{ path('appli_entrainement_decouvrir') }}" class="entrainement-button entrainement-button-secondary">Découvrir</a>
+			</div>
+		</div>
+
+		<div class="entrainement-card">
+			<h2 class="entrainement-card-title">Mes entraînements</h2>
+			<table class="entrainement-table">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Durée</th>
+						<th>Difficulté</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for workout in workouts %}
+						<tr>
+							<td>{{ workout.name }}</td>
+							<td>{{ workout.duration }}</td>
+							<td>{{ workout.difficulty }}</td>
+							<td class="entrainement-actions">
+								<a href="{{ path('appli_entrainement_show', {id: workout.id}) }}" class="entrainement-action-button entrainement-action-button-info">Voir</a>
+								<a href="{{ path('appli_entrainement_edit') }}" class="entrainement-action-button entrainement-action-button-warning">Modifier</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

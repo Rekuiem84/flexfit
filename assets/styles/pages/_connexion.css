@@ -34,11 +34,9 @@
 			& > div {
 				position: relative;
 				font-size: var(--fs-ls);
-			}
-
-			label + input,
-			.password-cont input {
-				margin-top: 0.5rem;
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
 			}
 
 			input {

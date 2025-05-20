@@ -1,0 +1,88 @@
+.activite-container {
+	max-width: 1200px;
+	margin: 2rem auto;
+}
+
+.activite-title {
+	color: #333;
+	font-size: 1.8rem;
+	margin-bottom: 2rem;
+}
+
+.activite-tabs {
+	display: flex;
+	list-style: none;
+	border-bottom: 2px solid #eee;
+	margin-bottom: 2rem;
+}
+
+.activite-tab {
+	margin-right: 1rem;
+}
+
+.activite-tab-link {
+	display: block;
+	padding: 1rem 1.5rem;
+	color: #666;
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: all 0.3s;
+}
+
+.activite-tab-link:hover {
+	color: #007bff;
+}
+
+.activite-tab-link.active {
+	color: #007bff;
+	border-bottom-color: #007bff;
+}
+
+.activite-tab-content {
+	display: none;
+}
+
+.activite-tab-content.active {
+	display: block;
+}
+
+.activite-card {
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 1.5rem;
+}
+
+.activite-card-title {
+	color: #444;
+	font-size: 1.4rem;
+	margin-bottom: 1.5rem;
+}
+
+.activite-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.activite-table th,
+.activite-table td {
+	padding: 1rem;
+	text-align: left;
+	border-bottom: 1px solid #eee;
+}
+
+.activite-table th {
+	background-color: #f8f9fa;
+	font-weight: 600;
+	color: #333;
+}
+
+.activite-table tr:last-child td {
+	border-bottom: none;
+}
+
+.activite-empty {
+	text-align: center;
+	color: #666;
+	padding: 2rem;
+}

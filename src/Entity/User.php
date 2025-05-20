@@ -68,11 +68,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 25, nullable: true)]
     private ?string $telephone = null;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $gender = null;
+
+    /**
+     * @var Collection<int, Product>
+     */
+    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'users')]
+    private Collection $products;
+
+    #[ORM\Column(length: 25)]
+    private ?string $account_state = null;
+
     public function __construct()
     {
         $this->seances = new ArrayCollection();
         $this->savedProducts = new ArrayCollection();
         $this->orderHistories = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -296,6 +309,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephone(?string $telephone): static
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): static
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): static
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): static
+    {
+        $this->products->removeElement($product);
+
+        return $this;
+    }
+
+    public function getAccountState(): ?string
+    {
+        return $this->account_state;
+    }
+
+    public function setAccountState(string $account_state): static
+    {
+        $this->account_state = $account_state;
 
         return $this;
     }

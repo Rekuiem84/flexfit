@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<div class="profil-container">
+		<div class="profil-card">
+			<h1 class="profil-title">{{ title }}</h1>
+
+			<form class="profil-form">
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="name">Nom</label>
+					<input type="text" class="profil-form-input" id="name" name="name" value="{{ user.name }}" required>
+				</div>
+
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="email">Email</label>
+					<input type="email" class="profil-form-input" id="email" name="email" value="{{ user.email }}" required>
+				</div>
+
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="age">Âge</label>
+					<input type="number" class="profil-form-input" id="age" name="age" value="{{ user.age }}" required>
+				</div>
+
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="height">Taille (cm)</label>
+					<input type="number" class="profil-form-input" id="height" name="height" value="{{ user.height }}" required>
+				</div>
+
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="weight">Poids (kg)</label>
+					<input type="number" class="profil-form-input" id="weight" name="weight" value="{{ user.weight }}" required>
+				</div>
+
+				<div class="profil-form-group">
+					<label class="profil-form-label" for="goal">Objectif</label>
+					<input type="text" class="profil-form-input" id="goal" name="goal" value="{{ user.goal }}" required>
+				</div>
+
+				<div class="profil-form-buttons">
+					<a href="{{ path('appli_profil') }}" class="profil-form-button profil-form-button-secondary">Annuler</a>
+					<button type="submit" class="profil-form-button profil-form-button-primary">Enregistrer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

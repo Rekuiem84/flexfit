@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block body %}
+	<div class="activite-container">
+		<h1 class="activite-title">{{ title }}</h1>
+
+		<ul class="activite-tabs">
+			<li class="activite-tab">
+				<a href="#workouts" class="activite-tab-link active">Entraînements</a>
+			</li>
+			<li class="activite-tab">
+				<a href="#meals" class="activite-tab-link">Repas</a>
+			</li>
+		</ul>
+
+		<div id="workouts" class="activite-tab-content active">
+			<div class="activite-card">
+				<h2 class="activite-card-title">Historique des entraînements</h2>
+				<table class="activite-table">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Nom</th>
+							<th>Durée</th>
+							<th>Calories</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for activity in activities %}
+							{% if activity.type == 'workout' %}
+								<tr>
+									<td>{{ activity.date|date('d/m/Y') }}</td>
+									<td>{{ activity.name }}</td>
+									<td>{{ activity.duration }}</td>
+									<td>{{ activity.calories }}
+										kcal</td>
+								</tr>
+							{% endif %}
+						{% else %}
+							<tr>
+								<td colspan="4" class="activite-empty">Aucun entraînement enregistré</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div id="meals" class="activite-tab-content">
+			<div class="activite-card">
+				<h2 class="activite-card-title">Historique des repas</h2>
+				<table class="activite-table">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Nom</th>
+							<th>Calories</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for activity in activities %}
+							{% if activity.type == 'meal' %}
+								<tr>
+									<td>{{ activity.date|date('d/m/Y') }}</td>
+									<td>{{ activity.name }}</td>
+									<td>{{ activity.calories }}
+										kcal</td>
+								</tr>
+							{% endif %}
+						{% else %}
+							<tr>
+								<td colspan="3" class="activite-empty">Aucun repas enregistré</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+const tabLinks = document.querySelectorAll('.activite-tab-link');
+const tabContents = document.querySelectorAll('.activite-tab-content');
+
+tabLinks.forEach(link => {
+link.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href').substring(1);
+
+// Update active tab link
+tabLinks.forEach(l => l.classList.remove('active'));
+this.classList.add('active');
+
+// Show target content
+tabContents.forEach(content => {
+content.classList.remove('active');
+if (content.id === targetId) {
+content.classList.add('active');
+}
+});
+});
+});
+});
+		</script>
+	{% endblock %}
+{% endblock %}

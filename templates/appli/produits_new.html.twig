@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Produit
+{% endblock %}
+
+{% block body %}
+	<div class="produit-new-container">
+		<div class="produit-new-card">
+			<h2 class="produit-new-title">Ajouter un nouveau produit</h2>
+
+			{{ form_start(form) }}
+			<div class="produit-new-form-group">
+				{{ form_label(form.product, 'Sélectionner un produit', {'label_attr': {'class': 'produit-new-form-label'}}) }}
+				{{ form_widget(form.product, {'attr': {'class': 'produit-new-form-select'}}) }}
+				{{ form_errors(form.product) }}
+				<small class="produit-new-form-help">Choisissez un produit à ajouter à votre collection</small>
+			</div>
+
+			<div class="produit-new-buttons">
+				<a href="{{ path('appli_produits') }}" class="produit-new-btn-back">Retour</a>
+				<button type="submit" class="produit-new-btn-submit">Ajouter à ma collection</button>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
