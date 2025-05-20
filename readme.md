@@ -1,0 +1,12 @@
+log
+informations
+dashboard
+produits
+produits/nouveau
+entrainement
+entrainement/start
+entrainement/edit
+entrainement/decouvrir
+activite
+profil
+profil/edit
